@@ -1,7 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Instagram, Twitter } from 'lucide-react';
 
 export const FooterSection: React.FC = () => {
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitted(true);
+  };
+
   return (
     <footer className="bg-[#FF6B00]">
       <div className="py-20 px-4">
@@ -9,18 +16,30 @@ export const FooterSection: React.FC = () => {
           {/* Form Section */}
           <div className="flex flex-col justify-center items-center text-center">
            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-[#CCFF00] uppercase mb-3 md:mb-4 px-4">Try Zoooom</h2>
-           <p className="text-white font-bold uppercase text-xs sm:text-sm mb-6 md:mb-8 tracking-wide px-4">
-             Sign up now and get a bonus: <span className="text-[#CCFF00]">10% OFF</span> <br/> your next order!
-           </p>
+           
+           {isSubmitted ? (
+             <div className="w-full max-w-sm px-4">
+               <div className="bg-[#CCFF00] text-black font-bold py-6 md:py-8 px-6 rounded-full border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+                 <p className="text-2xl md:text-3xl uppercase mb-2">Thank You!</p>
+                 <p className="text-lg md:text-xl">Thank you for signing up</p>
+               </div>
+             </div>
+           ) : (
+             <>
+               <p className="text-white font-bold uppercase text-xs sm:text-sm mb-6 md:mb-8 tracking-wide px-4">
+                 Sign up now and get a bonus: <span className="text-[#CCFF00]">10% OFF</span> <br/> your next order!
+               </p>
 
-           <form className="w-full max-w-sm flex flex-col gap-3 md:gap-4 px-4">
-             <input type="text" placeholder="Jane Doe" className="w-full p-3 md:p-4 rounded-full border-2 border-white bg-white/90 focus:outline-none focus:border-black font-bold text-center placeholder-gray-400 text-sm md:text-base" />
-             <input type="tel" placeholder="Your Phone" className="w-full p-3 md:p-4 rounded-full border-2 border-white bg-white/90 focus:outline-none focus:border-black font-bold text-center placeholder-gray-400 text-sm md:text-base" />
-             <input type="email" placeholder="Your Email" className="w-full p-3 md:p-4 rounded-full border-2 border-white bg-white/90 focus:outline-none focus:border-black font-bold text-center placeholder-gray-400 text-sm md:text-base" />
-             <button className="w-full bg-[#CCFF00] text-black font-bold py-3 md:py-4 rounded-full border-2 border-black uppercase mt-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px] transition-all text-sm md:text-base">
-               Sign up now
-             </button>
-           </form>
+               <form onSubmit={handleSubmit} className="w-full max-w-sm flex flex-col gap-3 md:gap-4 px-4">
+                 <input type="text" placeholder="Jane Doe" className="w-full p-3 md:p-4 rounded-full border-2 border-white bg-white/90 focus:outline-none focus:border-black font-bold text-center placeholder-gray-400 text-sm md:text-base" />
+                 <input type="tel" placeholder="Your Phone" className="w-full p-3 md:p-4 rounded-full border-2 border-white bg-white/90 focus:outline-none focus:border-black font-bold text-center placeholder-gray-400 text-sm md:text-base" />
+                 <input type="email" placeholder="Your Email" className="w-full p-3 md:p-4 rounded-full border-2 border-white bg-white/90 focus:outline-none focus:border-black font-bold text-center placeholder-gray-400 text-sm md:text-base" />
+                 <button type="submit" className="w-full bg-[#CCFF00] text-black font-bold py-3 md:py-4 rounded-full border-2 border-black uppercase mt-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px] transition-all text-sm md:text-base">
+                   Sign up now
+                 </button>
+               </form>
+             </>
+           )}
           </div>
         </div>
       </div>

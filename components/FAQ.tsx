@@ -32,7 +32,7 @@ export const FAQSection: React.FC = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section className="bg-[#FF99CC] py-20 px-4">
+    <section id="faq" className="bg-[#FF99CC] py-20 px-4">
       <div className="container mx-auto max-w-6xl">
         <div className="flex flex-col md:flex-row gap-8 md:gap-12">
           <div className="w-full md:w-1/2">

@@ -53,7 +53,7 @@ export const About: React.FC = () => {
       </section>
 
       {/* Benefits */}
-      <section className="bg-[#FFF8E1] py-20 px-4">
+      <section id="works" className="bg-[#FFF8E1] py-20 px-4">
         <div className="container mx-auto max-w-6xl">
           <div className="flex flex-col md:flex-row items-center gap-12">
             <div className="w-full md:w-1/3 flex justify-center relative">

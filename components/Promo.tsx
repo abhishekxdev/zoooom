@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export const Promo: React.FC = () => {
   return (
@@ -8,9 +9,12 @@ export const Promo: React.FC = () => {
           Order now and get a bonus: <br />
           <span className="text-[#CCFF00]">10% OFF</span> your next order
         </h2>
-        <button className="bg-[#CCFF00] text-black font-bold py-2 md:py-3 px-6 md:px-10 rounded-full hover:bg-white transition-colors uppercase border-2 border-transparent hover:border-black text-sm md:text-base">
+        <Link 
+          to="/products"
+          className="inline-block bg-[#CCFF00] text-black font-bold py-2 md:py-3 px-6 md:px-10 rounded-full hover:bg-white transition-colors uppercase border-2 border-transparent hover:border-black text-sm md:text-base"
+        >
           Buy Now
-        </button>
+        </Link>
       </div>
       
       {/* Decorative slices */}

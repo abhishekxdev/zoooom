@@ -1,7 +1,13 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { PRODUCTS } from '../constants';
+import { useCart } from '../contexts/CartContext';
 
 export const Products: React.FC = () => {
+  // Show only first 3 products
+  const popularProducts = PRODUCTS.slice(0, 3);
+  const { addToCart } = useCart();
+
   return (
     <section id="products" className="bg-[#FF6B00] py-20 px-4">
       <div className="container mx-auto">
@@ -10,8 +16,12 @@ export const Products: React.FC = () => {
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {PRODUCTS.map((product) => (
-            <div key={product.id} className="bg-white rounded-[2rem] p-6 flex flex-col items-center relative shadow-xl overflow-hidden group">
+          {popularProducts.map((product) => (
+            <Link 
+              key={product.id} 
+              to={`/product/${product.id}`}
+              className="bg-white rounded-[2rem] p-6 flex flex-col items-center relative shadow-xl overflow-hidden group"
+            >
               {/* Card Background Pattern */}
               <div 
                 className="absolute inset-0"
@@ -32,18 +42,33 @@ export const Products: React.FC = () => {
                 <h3 className="font-display text-xl md:text-2xl text-black uppercase mb-2 text-center px-2">{product.name}</h3>
                 <p className="font-bold text-lg md:text-xl text-gray-700 mb-4 md:mb-6">${product.price}</p>
                 
-                <button className="w-full bg-[#5D3FD3] text-white font-bold py-3 rounded-full hover:bg-[#4a32a8] transition-colors border-2 border-transparent hover:border-black uppercase text-sm tracking-wider">
+                <button 
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    addToCart({
+                      id: product.id,
+                      name: product.name,
+                      price: product.price,
+                      image: product.image,
+                    });
+                  }}
+                  className="w-full bg-[#5D3FD3] text-white font-bold py-3 rounded-full hover:bg-[#4a32a8] transition-colors border-2 border-transparent hover:border-black uppercase text-sm tracking-wider"
+                >
                   Add to Cart
                 </button>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
 
         <div className="text-center mt-8 md:mt-12">
-          <button className="bg-[#CCFF00] text-black font-bold py-3 md:py-4 px-6 md:px-10 rounded-full border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all uppercase text-sm md:text-base">
+          <Link 
+            to="/products"
+            className="inline-block bg-[#CCFF00] text-black font-bold py-3 md:py-4 px-6 md:px-10 rounded-full border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all uppercase text-sm md:text-base"
+          >
             View All Products
-          </button>
+          </Link>
         </div>
       </div>
     </section>

@@ -1,32 +1,33 @@
 import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { CartProvider } from './contexts/CartContext';
 import { Navbar } from './components/Navbar';
-import { Hero } from './components/Hero';
-import { Products } from './components/Products';
-import { About } from './components/About';
-import { Ingredients } from './components/Ingredients';
-import { VarietyPack } from './components/VarietyPack';
-import { Testimonials } from './components/Testimonials';
-import { Locator, FAQSection } from './components/FAQ'; // Locator and FAQSection are exported from same file for simplicity here
-import { Promo } from './components/Promo';
-import { FooterSection } from './components/Footer';
+import { Cart } from './components/Cart';
+import { FloatingCartIcon } from './components/FloatingCartIcon';
+import { HomePage } from './pages/HomePage';
+import { ProductsPage } from './pages/ProductsPage';
+import { ProductDetailPage } from './pages/ProductDetailPage';
+import { CheckoutPage } from './pages/CheckoutPage';
+import { OrderConfirmationPage } from './pages/OrderConfirmationPage';
 
 function App() {
   return (
-    <div className="font-sans antialiased text-[#1A1A1A] overflow-x-hidden selection:bg-[#CCFF00] selection:text-black">
-      <Navbar />
-      <Hero />
-      <main>
-        <Products />
-        <About />
-        <Ingredients />
-        <VarietyPack />
-        <Testimonials />
-        <Locator />
-        <Promo />
-        <FAQSection />
-        <FooterSection />
-      </main>
-    </div>
+    <CartProvider>
+      <Router>
+        <div className="font-sans antialiased text-[#1A1A1A] overflow-x-hidden selection:bg-[#CCFF00] selection:text-black">
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/products" element={<ProductsPage />} />
+            <Route path="/product/:id" element={<ProductDetailPage />} />
+            <Route path="/checkout" element={<CheckoutPage />} />
+            <Route path="/order-confirmation" element={<OrderConfirmationPage />} />
+          </Routes>
+          <Cart />
+          <FloatingCartIcon />
+        </div>
+      </Router>
+    </CartProvider>
   );
 }
 

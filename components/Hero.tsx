@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export const Hero: React.FC = () => {
   return (
@@ -58,9 +59,12 @@ export const Hero: React.FC = () => {
           The energy of nature <br /> in every bottle
         </h2>
 
-        <button className="bg-[#5D3FD3] text-white text-base md:text-lg lg:text-xl font-bold py-3 md:py-4 px-8 md:px-12 rounded-full shadow-[0px_10px_20px_rgba(93,63,211,0.4)] hover:bg-[#4a32a8] transition-all transform hover:-translate-y-1 mt-4">
+        <Link 
+          to="/products"
+          className="inline-block bg-[#5D3FD3] text-white text-base md:text-lg lg:text-xl font-bold py-3 md:py-4 px-8 md:px-12 rounded-full shadow-[0px_10px_20px_rgba(93,63,211,0.4)] hover:bg-[#4a32a8] transition-all transform hover:-translate-y-1 mt-4"
+        >
           Buy Now
-        </button>
+        </Link>
       </div>
 
     </section>

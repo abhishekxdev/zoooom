@@ -18,7 +18,7 @@ export const Ingredients: React.FC = () => {
         </div>
 
         {/* Floating Banner */}
-        <div className="mt-8 md:mt-12 bg-[#5D3FD3] text-white p-4 md:p-6 rounded-2xl transform md:translate-x-20 shadow-xl relative z-10 border-l-4 md:border-l-8 border-[#FF99CC]">
+        <div className="mt-8 md:mt-12 bg-[#5D3FD3] text-white p-4 md:p-6 rounded-2xl shadow-xl relative z-10 border-l-4 md:border-l-8 border-[#FF99CC]">
            <h4 className="font-display text-xl md:text-2xl uppercase mb-2">Please Note!</h4>
            <p className="text-xs md:text-sm font-medium opacity-90">
              Sugar added to the drink undergoes a fermentation process and is completely absorbed by healthy bacteria.
